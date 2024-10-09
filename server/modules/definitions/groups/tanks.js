@@ -1109,6 +1109,36 @@ Class.revolver = {
         }
     ]
 }
+Class.forkSplitterBullet = {
+    PARENT: "bullet",
+    INDEPENDENT: true,
+    GUNS: [
+        {
+            POSITION: [8, 8, 1, 0, 0, 0, 0],
+            PROPERTIES: {
+                SHOOT_SETTINGS: combineStats([g.basic, g.pounder, { damage: 0.55, size: 2.4 }]),
+                TYPE: ["bullet", { PERSISTS_AFTER_DEATH: true }],
+                SHOOT_ON_DEATH: true,
+            }
+        },
+        {
+            POSITION: [8, 8, 1, 0, 0, 30, 0],
+            PROPERTIES: {
+                SHOOT_SETTINGS: combineStats([g.basic, g.pounder, { damage: 0.55, size: 2.4 } ]),
+                TYPE: ["bullet", { PERSISTS_AFTER_DEATH: true }],
+                SHOOT_ON_DEATH: true,
+            }
+        },
+        {
+            POSITION: [8, 8, 1, 0, 0, -30, 0],
+            PROPERTIES: {
+                SHOOT_SETTINGS: combineStats([g.basic, g.pounder, { damage: 0.55, size: 2.4 }]),
+                TYPE: ["bullet", { PERSISTS_AFTER_DEATH: true }],
+                SHOOT_ON_DEATH: true,
+            }
+        },
+    ]
+}
 Class.fork = {
     PARENT: "genericTank",
     LABEL: "Fork",
@@ -1116,7 +1146,6 @@ Class.fork = {
     BODY: {
         FOV: 1.2 * base.FOV
     },
-    UPGRADE_TOOLTIP: "[DEV NOTE] This tank does not function as intended yet!",
     GUNS: [
         {
             POSITION: {
@@ -1156,8 +1185,8 @@ Class.fork = {
                 WIDTH: 8.5
             },
             PROPERTIES: {
-                SHOOT_SETTINGS: combineStats([g.basic, g.sniper, { pen: 2 }]),
-                TYPE: "bullet"
+                SHOOT_SETTINGS: combineStats([g.basic, g.sniper, { pen: 2, reload: 3.5 }]),
+                TYPE: "forkSplitterBullet"
             }
         }
     ]
